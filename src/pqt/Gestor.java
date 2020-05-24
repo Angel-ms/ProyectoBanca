@@ -8,7 +8,15 @@ public class Gestor {
 	Gestor(){
 		clientes = new ArrayList<>();
 	}
-	
+	/**
+	 * 
+	 * @param nombre	Nombre del titular de la cuenta
+	 * @param apellidos	Apellidos del titular de la cuenta
+	 * @param nif		Nif del titular de la cuenta (se comprobara para asegurar su unicidad)
+	 * @param direccion	Direccion del titular de la cuenta
+	 * @param telefono	Telefono del titular de la cuenta
+	 * @param edad		Edad del titular de la cuenta
+	 */
 	public void darClienteDeAlta(String nombre, String apellidos, String nif, String direccion, int telefono, int edad){
 		if (encontrarNIF(nif) == -1) {
 			clientes.add(new Cliente(nombre, apellidos, nif, direccion, telefono, edad));
@@ -16,7 +24,12 @@ public class Gestor {
 			System.out.println("ERROR: Ya existe un cliente con ese NIF");
 		}
 	}
-	
+	/**
+	 * 
+	 * @param nifCliente Nif del cliente al que se le va a abrir la cuenta
+	 * @param saldo Saldo base con el que empezará la cuenta
+	 * @param limite Limite de gasto de la cuenta
+	 */
 	public void abrirCuenta(String nifCliente, float saldo, float limite) {
 		if(encontrarNIF(nifCliente)!=-1) {
 			clientes.get(encontrarNIF(nifCliente)).cuentas.add(new Cuenta(saldo, limite));
@@ -25,6 +38,11 @@ public class Gestor {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param nifCliente Nif del cliente al que se le va a abrir la cuenta
+	 * @param indiceCuenta Indice de la cuenta del cliente de la que se quiere consultar el saldo
+	 */
 	public void consultarSaldoMedio(String nifCliente, int indiceCuenta) {
 		if(encontrarNIF(nifCliente)!=-1) {
 			float acumuladorSaldo = 0;
@@ -40,6 +58,11 @@ public class Gestor {
 			System.out.println("ERROR: No existe ningun cliente con ese NIF");
 		}
 	}
+	/**
+	 * 
+	 * @param nifCliente Nif del cliente del que se quiere ver la cantidad de pagos
+	 * @param indiceCuenta Indice de la cuenta del cliente a la que está asignada la tarjeta que se quiere consultar
+	 */
 	public void consultarPagosRealizado(String nifCliente, int indiceCuenta) {
 		if(encontrarNIF(nifCliente)!=-1) {
 			if(clientes.get(encontrarNIF(nifCliente)).cuentas.get(indiceCuenta).getTarjetaAsociada() != null) {
@@ -51,6 +74,11 @@ public class Gestor {
 			System.out.println("ERROR: No existe ningun cliente con ese NIF");
 		}
 	}
+	/**
+	 * 
+	 * @param nifCliente Nif del cliente al que se quiere cambiar 
+	 * @param nombre Nuevo nombre
+	 */
 	public void cambiarNombreCliente(String nifCliente, String nombre) {
 		if(encontrarNIF(nifCliente)!=-1) {
 			clientes.get(encontrarNIF(nifCliente)).setNombre(nombre);
@@ -58,6 +86,11 @@ public class Gestor {
 			System.out.println("ERROR: No existe ningun cliente con ese NIF");
 		}
 }
+	/**
+	 * 
+	 * @param nifCliente Nif del cliente al que se quiere cambiar
+	 * @param apellidos Nuevos apellidos
+	 */
 	public void cambiarApellidosCliente(String nifCliente, String apellidos) {
 		if(encontrarNIF(nifCliente)!=-1) {
 			clientes.get(encontrarNIF(nifCliente)).setApellidos(apellidos);
@@ -66,6 +99,11 @@ public class Gestor {
 			System.out.println("ERROR: No existe ningun cliente con ese NIF");
 		}
 }
+	/**
+	 * 
+	 * @param nifCliente Nif del cliente al que se quiere cambiar
+	 * @param nifNuevo Nuevo nif
+	 */
 	public void cambiarNIFCliente(String nifCliente, String nifNuevo) {
 			if(encontrarNIF(nifCliente)!=-1) {
 				clientes.get(encontrarNIF(nifCliente)).setNif(nifNuevo);
@@ -74,6 +112,11 @@ public class Gestor {
 			System.out.println("ERROR: No existe ningun cliente con ese NIF");
 		}
 }
+	/**
+	 * 
+	 * @param nifCliente Nif del cliente al que se quiere cambiar
+	 * @param direccion Nueva direccion
+	 */
 	public void cambiarDireccionCliente(String nifCliente, String direccion) {
 		if(encontrarNIF(nifCliente)!=-1) {
 			clientes.get(encontrarNIF(nifCliente)).setDireccion(direccion);
@@ -81,6 +124,11 @@ public class Gestor {
 			System.out.println("ERROR: No existe ningun cliente con ese NIF");
 		}
 }
+	/**
+	 * 
+	 * @param nifCliente Nif del cliente al que se quiere cambiar
+	 * @param telefono Nuevo telefono
+	 */
 	public void cambiarTelefonoCliente(String nifCliente, int telefono) {
 		if(encontrarNIF(nifCliente)!=-1) {
 			clientes.get(encontrarNIF(nifCliente)).setTelefono(telefono);
@@ -88,6 +136,11 @@ public class Gestor {
 			System.out.println("ERROR: No existe ningun cliente con ese NIF");
 		}
 }
+	/**
+	 * 
+	 * @param nifCliente Nif del cliente al que se quiere cambiar
+	 * @param edad Nueva edad
+	 */
 	public void cambiarEdadCliente(String nifCliente, int edad) {
 		if(encontrarNIF(nifCliente)!=-1) {
 			clientes.get(encontrarNIF(nifCliente)).setEdad(edad);
@@ -95,7 +148,11 @@ public class Gestor {
 			System.out.println("ERROR: No existe ningun cliente con ese NIF");
 		}
 }
-	
+	/**
+	 * 
+	 * @param nif Nif que se quiere consultar contra la lista de clientes
+	 * @return Indice que ocupa el cliente cuyo nif se ha consultado, si no existe devuelve -1
+	 */
 	public int encontrarNIF (String nif) {
 		int indice = -1;
 		for (int i = 0; i< clientes.size(); i++) {
