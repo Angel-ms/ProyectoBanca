@@ -136,7 +136,7 @@ public class Cliente {
 	 * 
 	 * @param cantidad cantidad a comprobar en euros
 	 * @param cuenta indice de la cuenta del cliente en la que se quiere hacer la comprobacion
-	 * @return
+	 * @return True si hay suficiente saldo y false en el resto de los casos
 	 */
 	public boolean haySuficienteSaldo (float cantidad, int cuenta) {
 		return (cuentas.get(cuenta).saldo >= cantidad);

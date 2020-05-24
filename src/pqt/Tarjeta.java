@@ -52,7 +52,7 @@ public class Tarjeta {
 	}
 	/**
 	 * 
-	 * @param limiteRetiradaCajero nuevo limite de pago por internet en euros
+	 * @param limitePagoInternet nuevo limite de pago por internet en euros
 	 */
 	public void setLimitePagoInternet(float limitePagoInternet) {
 		this.limitePagoInternet = limitePagoInternet;
