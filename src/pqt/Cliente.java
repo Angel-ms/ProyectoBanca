@@ -88,9 +88,9 @@ public class Cliente {
 	
 	public void pagarInternet(float cantidad, int cuenta) {
 		if (cuentas.get(cuenta).tarjetaAsociada != null) {	
-			if(cantidad <= cuentas.get(cuenta).tarjetaAsociada.getLimitePagoInternet()) {
+			if(cantidad <= cuentas.get(cuenta).getTarjetaAsociada().getLimitePagoInternet()) {
 				retirar(cantidad,cuenta);
-				cuentas.get(cuenta).tarjetaAsociada.setPagosRealizados(cuentas.get(cuenta).tarjetaAsociada.getPagosRealizados()+1);
+				cuentas.get(cuenta).tarjetaAsociada.setPagosRealizados(cuentas.get(cuenta).getTarjetaAsociada().getPagosRealizados()+1);
 			} else {
 				System.out.println("ERROR: El coste es superior al limite establecido para pagos por internet");
 			}
@@ -102,9 +102,9 @@ public class Cliente {
 	
 	public void retirarMetalico(float cantidad, int cuenta) {
 		if (cuentas.get(cuenta).tarjetaAsociada != null) {	
-			if(cantidad <= cuentas.get(cuenta).tarjetaAsociada.getLimiteRetiradaCajero()) {
+			if(cantidad <= cuentas.get(cuenta).getTarjetaAsociada().getLimiteRetiradaCajero()) {
 				retirar(cantidad,cuenta);
-				cuentas.get(cuenta).tarjetaAsociada.setPagosRealizados(cuentas.get(cuenta).tarjetaAsociada.getPagosRealizados()+1);
+				cuentas.get(cuenta).tarjetaAsociada.setPagosRealizados(cuentas.get(cuenta).getTarjetaAsociada().getPagosRealizados()+1);
 			} else {
 				System.out.println("ERROR: El coste es superior al limite establecido para retirar en metálico");
 			}
