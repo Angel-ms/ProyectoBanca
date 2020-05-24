@@ -33,6 +33,9 @@ public class Tarjeta {
 	}
 
 	
+	public void setPagosRealizados(int pagosRealizados) {
+		this.pagosRealizados = pagosRealizados;
+	}
 	public int getPagosRealizados() {
 		return pagosRealizados;
 	}
